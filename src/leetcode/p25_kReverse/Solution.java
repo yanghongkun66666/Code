@@ -1,4 +1,4 @@
-package p25_kReverse;
+package leetcode.p25_kReverse;
 
 /**
  * Solves the "Reverse Nodes in k-Group" problem.
