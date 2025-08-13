@@ -1,1 +1,80 @@
+# ===================== #
+# 通用操作系统忽略文件
+# ===================== #
+# macOS
+.DS_Store
+.AppleDouble
+.LSOverride
+__MACOSX/
+
+# Windows
+Thumbs.db
+ehthumbs.db
+Desktop.ini
+$RECYCLE.BIN/
+
+# Linux
+*~
+
+# ===================== #
+# Java 常见忽略文件
+# ===================== #
+# 编译输出
+*.class
+*.war
+*.ear
+*.jar
+*.log
+
+# 运行时生成文件
+hs_err_pid*
+replay_pid*
+
+# ===================== #
+# IntelliJ IDEA 忽略文件
+# ===================== #
+.idea/
+*.iml
 out/
+
+# ===================== #
+# Eclipse 忽略文件
+# ===================== #
+.project
+.classpath
+.settings/
+
+# ===================== #
+# Maven 忽略文件
+# ===================== #
+target/
+
+# ===================== #
+# Gradle 忽略文件
+# ===================== #
+.gradle/
+build/
+
+# ===================== #
+# 其他工具
+# ===================== #
+# VS Code
+.vscode/
+
+# Node.js（如前端项目）
+node_modules/
+npm-debug.log
+yarn-error.log
+
+# Python（如果有脚本）
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# ===================== #
+# 临时文件
+# ===================== #
+*.tmp
+*.swp
+*.swo
