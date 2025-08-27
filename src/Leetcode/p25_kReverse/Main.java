@@ -1,6 +1,4 @@
-package leetcode.p25_kReverse;
-
-import leetcode.p25_kReverse.Solution;
+package Leetcode.p25_kReverse;
 
 import java.util.Scanner;
 

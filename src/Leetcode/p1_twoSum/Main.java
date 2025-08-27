@@ -1,4 +1,4 @@
-package leetcode.p1_twoSum;
+package Leetcode.p1_twoSum;
 
 import java.util.Scanner;
 

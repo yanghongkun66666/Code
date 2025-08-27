@@ -1,4 +1,4 @@
-package leetcode.p56_mergeInterval;
+package Leetcode.p56_mergeInterval;
 
 import java.util.Scanner;
 
