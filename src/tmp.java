@@ -47,6 +47,7 @@ public class tmp {
         cur = dummy.next;
         while (cur != null) {
             System.out.print(cur.val + " ");
+            cur = cur.next;
         }
     }
 
