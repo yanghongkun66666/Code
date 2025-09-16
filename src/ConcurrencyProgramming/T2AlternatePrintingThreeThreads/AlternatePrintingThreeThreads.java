@@ -5,6 +5,11 @@ package ConcurrencyProgramming.T2AlternatePrintingThreeThreads;
  * 线程1 打印 (3n+1) 的数
  * 线程2 打印 (3n+2) 的数
  * 线程3 打印 (3n) 的数
+ * wait() 必须在持有 lock 的同步块里调用；调用后自动释放锁并挂起。
+ *
+ * 被 notifyAll() 唤醒后，线程先重新抢锁，再用 while 重新检查条件（防止“虚假唤醒”或被唤醒但还没轮到它）。
+ *
+ * 检查条件 + 打印 + 修改 currentNumber/turn + notifyAll 必须在同一个 synchronized 块里做，保证原子性。
  */
 public class AlternatePrintingThreeThreads {
 
