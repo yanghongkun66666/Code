@@ -1,17 +1,16 @@
-package WrittenTest.KamaCoderP47.matrix;
+package WrittenTest.KamaCoderP53;
 
-import java.util.ArrayList;
-import java.util.Arrays;
-import java.util.List;
-import java.util.Scanner;
+import java.util.*;
 
 /**
- * 单源点最短路径 dijkstra
- * 思路：1. 选源点到哪个节点路径最短同时该节点未被访问过
- * 2. 该最近节点标记为访问过
- * 3. 借助新访问的节点，更新没访问节点到源点距离
- * minDist数组代表源点到各个节点的最短距离 初始化为max
- * visited标记是否访问过
+ * 最小生成树算法prim算法
+ * 得到所有节点的最小联通子图
+ *
+ * prrm算法
+ * 1. 选距离生成树最近节点
+ * 2. 最近节点加入生成树
+ * 3. 更新非生成树节点到生成树的距离（即更新minDist数组）
+ * minDist数组记录了所有非生成树节点距离生成树的最小距离
  */
 public class Main {
     public static void main(String[] args) {

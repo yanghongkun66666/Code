@@ -23,7 +23,7 @@ public class Main {
 
 
     static class Node implements Comparable<Node>{
-        //存放的是从源站点到目标站点的最短距离，主要用于优先级队列中使用，跟minDist区分开来
+        //存放的是从源站点到目标站点的最短距离，主要用于优先级队列中使用，跟minDist区分开来，这是个中间过程
         char to;
         int time;
         public Node(char to, int time) {
@@ -49,6 +49,7 @@ public class Main {
 
         //构造无向图，邻接表形式，使用hashmap存储每个站的邻接站点
         Map<Character, List<Edge>> graph = new HashMap<>(); //存储源站到目标地铁站之间的距离，双向图
+        //邻接矩阵就直接用二维数组就好了
         while (sc.hasNext()) {
             //一直读取，直到读取到终止字符串
             String token = sc.next();
@@ -79,7 +80,7 @@ public class Main {
         Map<Character,Integer> minDist = new HashMap<>(); //代表源站点到目标站点的最短距离
         Map<Character, Character> prev = new HashMap<>();
 
-        //所以涉及到的站点都初始化
+        //所有涉及到的站点都初始化
         for (Character u : graph.keySet()) {
             minDist.put(u, Integer.MAX_VALUE);
             for (Edge edge : graph.get(u)) {
@@ -88,6 +89,24 @@ public class Main {
                 }
             }
         }
+
+        /**
+         * // 在 while 循环读取输入时 可以尝试用这种初始化minDist替换一下，我感觉这种好像更直观一些
+         * while (sc.hasNext()) {
+         *     // ...
+         *     char u = token.charAt(0);
+         *     char v = sc.next().charAt(0);
+         *     // 把所有出现过的节点都加到 set 里
+         *     allNodes.add(u);
+         *     allNodes.add(v);
+         *     // ...
+         * }
+         *
+         * // 初始化时，直接遍历这个 set
+         * for (Character node : allNodes) {
+         *     minDist.put(node, Integer.MAX_VALUE);
+         * }
+         */
         //现在每个站点到源站点的最远距离已经初始化为无穷大
 
         minDist.put(start, 0);  //源站点到源站点之间的最短距离为0
@@ -96,6 +115,8 @@ public class Main {
         //使用优先级队列实现Dijkstra算法
         PriorityQueue<Node> pq = new PriorityQueue<Node>(); //pq中存放的就是当前可访问的邻接站点中最短的那个
         pq.add(new Node(start, 0));
+        //PriorityQueue<Node> pq: 这是Dijkstra算法从朴素的O(V²)复杂度优化到O(E log V)复杂度的核心。
+        // 你正确地使用了它来动态获取当前距离源点最近的节点。
 
         while (pq.isEmpty() == false) { //这个队列里都是还未被访问的节点
             Node curNode = pq.poll(); //找到当前最近的还未被访问到的站点 优先级队列队顶部
