@@ -15,8 +15,8 @@ public class Main {
 
     private static Map<Character, List<Edge>> graph = new HashMap<>(); //main初始化，dfs用
     private static List<Character> path = new ArrayList<>();  //这是临时路径，当前遍历过程中保存的路径
-    private static List<Character> bestPath = new ArrayList<>(); //最终结果路径
-    private static Integer bestTime = Integer.MAX_VALUE;
+    private static List<Character> bestPath = new ArrayList<>(); //最终结果路径,全局最优路径
+    private static Integer bestTime = Integer.MAX_VALUE; //全局最优时间
     private static Set<Character> visited = new HashSet<>(); //用来记录当前遍历路径中已经访问过的节点，防止成环
 
 
@@ -27,6 +27,7 @@ public class Main {
         char start = sc.next().charAt(0);
         char end = sc.next().charAt(0);
 
+        // 构建无向图（邻接表）
         while (sc.hasNext()) {
             String token = sc.next();
             if ("0000".equals(token)) {
@@ -77,6 +78,7 @@ public class Main {
     }
 
     private static void dfs(char cur, char end, int curTime) {
+        // 到达终点：更新全局最优
         if (cur == end) {
             //边界条件，找到end节点，因此当前的path就是一个结果路径了，可能不是最短，上一层已经把cur加入到了路径中
             if (curTime < bestTime) {
@@ -87,7 +89,8 @@ public class Main {
         }
 
         if (curTime >= bestTime) {
-            //剪枝，如果当前时间已经大于最佳时间了，同时还没搜索到最终结果，就提前退出，这条路径不合适
+            // 剪枝：当前已不优
+            // 剪枝，如果当前时间已经大于最佳时间了，同时还没搜索到最终结果，就提前退出，这条路径不合适
             return;
         }
 
@@ -109,14 +112,17 @@ public class Main {
                 //说明当前正在搜索的路径中已经加入过一次cur_to节点了,尝试加入别的节点
             }
 
+            // 选择
             path.add(cur_to); //进入下一层的时候就从cur_to开始向后搜，这里已经将cur_to加入到path中了
             curTime += time;
             visited.add(cur_to); //防止成环，把已经存在于路径中的记录一下
+
+            // 递归
             dfs(cur_to, end, curTime);
 
             //回溯，走到这里说明选中cur的其中一个邻接点cur_to的后续所有可能情况都搜索到了，可能的结果也保存下来了
             //此时开始尝试cur的其他邻接点了
-            //回溯  恢复现场
+            //回溯  恢复现场 （撤销选择）
             path.remove(path.size() - 1);
             curTime -= time;
             visited.remove(cur_to);
