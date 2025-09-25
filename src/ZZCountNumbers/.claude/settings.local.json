@@ -1,0 +1,11 @@
+{
+  "permissions": {
+    "allow": [
+      "Bash(del \"D:\\Idea Workspace\\Algorithm\\src\\ZZCountNumbers\\counter.html\")",
+      "Bash(del \"D:\\Idea Workspace\\Algorithm\\src\\ZZCountNumbers\\打包为exe.bat\")",
+      "Bash(del:*)"
+    ],
+    "deny": [],
+    "ask": []
+  }
+}
