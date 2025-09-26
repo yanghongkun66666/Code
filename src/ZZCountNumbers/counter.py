@@ -7,10 +7,10 @@ class CounterApp:
     def __init__(self):
         self.root = tk.Tk()
         self.root.title("计数器工具")
-        # 默认窗口尺寸稍大，确保能看到功能按钮
+        # 默认窗口尺寸；允许任意缩放（即便缩小导致控件溢出也可）
         self.root.geometry("360x420")
-        self.root.minsize(320, 360)
-        self.root.resizable(False, False)
+        self.root.minsize(1, 1)
+        self.root.resizable(True, True)
 
         # 设置窗口图标和属性
         self.root.configure(bg='#f0f0f0')
