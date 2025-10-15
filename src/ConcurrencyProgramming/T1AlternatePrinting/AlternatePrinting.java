@@ -14,7 +14,7 @@ public class AlternatePrinting {
                 while ((isOdd && currentNumber % 2 == 0) || 
                        (!isOdd && currentNumber % 2 != 0)) {
                     try {
-                        lock.wait(); // 当前线程不该打印时，等待
+                        lock.wait(); // 当前线程不该打印时，等待 释放锁
                     } catch (InterruptedException e) {
                         e.printStackTrace();
                     }
