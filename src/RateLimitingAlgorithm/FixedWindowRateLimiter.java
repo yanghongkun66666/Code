@@ -1,4 +1,4 @@
-package RateLimitingAlgorithm;
+package Demos.RateLimitingAlgorithm;
 
 import java.util.concurrent.atomic.AtomicInteger;
 

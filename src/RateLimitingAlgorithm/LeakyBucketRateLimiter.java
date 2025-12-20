@@ -1,4 +1,4 @@
-package RateLimitingAlgorithm;
+package Demos.RateLimitingAlgorithm;
 
 public class LeakyBucketRateLimiter {
     private double capacity = 10;    // 桶容量

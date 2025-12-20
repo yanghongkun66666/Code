@@ -1,4 +1,4 @@
-package RateLimitingAlgorithm;
+package Demos.RateLimitingAlgorithm;
 
 public class TokenBucketRateLimiter {
     private double capacity = 10;      // 桶容量
